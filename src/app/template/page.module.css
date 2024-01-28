@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.template_style_sidebar {
+    width: 400px;
+    height: 100%;
+    background-color: lightgray;
+    padding: 20px;
+}

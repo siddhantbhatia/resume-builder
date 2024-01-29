@@ -11,3 +11,12 @@
     background-color: lightgray;
     padding: 20px;
 }
+
+.template_preview {
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.template_preview_container {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}

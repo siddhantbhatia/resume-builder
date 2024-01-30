@@ -86,14 +86,6 @@ export const UserProfile: ResumeData = {
       score: 7,
     },
     {
-      name: "Java",
-      score: 7,
-    },
-    {
-      name: "C#",
-      score: 8,
-    },
-    {
       name: "SQL",
       score: 9,
     },

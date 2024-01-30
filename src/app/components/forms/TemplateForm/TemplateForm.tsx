@@ -22,18 +22,16 @@ import {
 import { MuiColorInput } from "mui-color-input";
 import { LayoutTypes } from "@app/components/LayoutSelector/types";
 import { TemplateFormState } from "./types";
+import { FontTypes } from "@app/font";
 
 const FontOptions: string[] = [
   "Open Sans",
-  "Merriweather",
+  "Roboto",
+  "Roboto Mono",
   "Roboto Condensed",
+  "Monterrat",
+  "Merriweather",
   "Playfair Display",
-  "Lato",
-  "Lora",
-  "PT Sans",
-  "PT Serif",
-  "IBM Plex Sans",
-  "IBM Plex Serif",
 ];
 
 const LayoutOptions = [
@@ -89,9 +87,14 @@ export function TemplateForm({
     setFormData({ ...formData, [name]: checked });
   };
 
-  const handleWatermarkImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleWatermarkChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setFormData({ ...formData, watermarkImage: value });
+    setFormData({ ...formData, watermark: value });
+  };
+
+  const handleTemplateNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setFormData({ ...formData, templateName: value });
   };
 
   const handleLayoutSelection = (layoutValue: LayoutTypes) => {
@@ -100,6 +103,13 @@ export function TemplateForm({
 
   return (
     <>
+      <TextField
+        fullWidth
+        margin="normal"
+        label="Template name"
+        value={formData.templateName}
+        onChange={handleTemplateNameChange}
+      />
       <Divider>
         <Typography gutterBottom>Font</Typography>
       </Divider>
@@ -118,14 +128,19 @@ export function TemplateForm({
         <Select
           value={formData.fontType}
           onChange={(e) =>
-            setFormData({ ...formData, fontType: e.target.value as string })
+            setFormData({ ...formData, fontType: e.target.value as FontTypes })
           }
         >
-          {FontOptions.map((option) => (
+          {Object.values(FontTypes).map((option) => (
             <MenuItem key={option} value={option}>
               {option}
             </MenuItem>
           ))}
+          {/* {FontOptions.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))} */}
         </Select>
       </FormControl>
 
@@ -143,9 +158,9 @@ export function TemplateForm({
       <TextField
         fullWidth
         margin="normal"
-        label="Watermark Image URL"
-        value={formData.watermarkImage}
-        onChange={handleWatermarkImageChange}
+        label="Watermark"
+        value={formData.watermark}
+        onChange={handleWatermarkChange}
       />
       <FormControl fullWidth margin="normal">
         <Typography gutterBottom>Page Margin: {formData.pageMargin}</Typography>
@@ -154,8 +169,8 @@ export function TemplateForm({
           onChange={(e, newValue) =>
             setFormData({ ...formData, pageMargin: newValue as number })
           }
-          min={1}
-          max={20}
+          min={15}
+          max={30}
           step={1}
         />
       </FormControl>

@@ -22,7 +22,7 @@ const defaultState: TemplateFormState = {
   underlineLinks: false,
   displayIcons: false,
   watermarkImage: "",
-  pageMargin: 8,
+  pageMargin: 20,
   selectedLayout: LayoutTypes.SOLID_HEADER,
 };
 

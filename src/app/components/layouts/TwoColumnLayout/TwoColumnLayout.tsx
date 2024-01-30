@@ -1,4 +1,11 @@
+import { AddressIcon, EmailIcon, LinkedinIcon, PhoneIcon } from "@app/svg";
 import { LayoutProps } from "../types";
+
+const personalDetailStyles = {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+};
 
 export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
   const {
@@ -16,15 +23,14 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
   } = data;
 
   const {
-    fontType = "Arial, sans-serif",
-    fontSize = "16px",
-    fontColor = "#000",
-    themeColor = "#3498db",
-    iconColor = "#fff",
-    underlineLinks = true,
-    displayIcons = true,
-    watermarkImage,
-    pageMargin = "20",
+    fontSize,
+    fontColor,
+    themeColor,
+    iconColor,
+    underlineLinks,
+    displayIcons,
+    watermark,
+    pageMargin,
   } = styles;
 
   const linkStyle = underlineLinks
@@ -34,48 +40,70 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
   return (
     <div
       style={{
-        fontFamily: fontType,
         fontSize,
         backgroundColor: "#ecf0f1",
         display: "flex",
-        gap: "20px",
+        height: "100%",
+        position: "relative",
       }}
     >
-      <div style={{ width: "70%", padding: `${pageMargin}px` }}>
-        {/* Personal Details */}
+      {watermark && (
+        <div
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "20%",
+            fontSize: "200px",
+            opacity: "0.3",
+            zIndex: "99",
+            color: "black",
+            transform: "rotateZ(45deg)",
+          }}
+        >
+          {watermark}
+        </div>
+      )}
+      <div style={{ width: "70%", padding: pageMargin }}>
         <div>
           <h1>{`${firstName} ${lastName}`}</h1>
           <div>{description}</div>
         </div>
-        {/* Contact Details */}
         <div style={{ marginTop: "20px" }}>
-          <div>
-            <span>Email:</span>{" "}
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <EmailIcon fill={iconColor} /> : `Email:`}
+            </span>
             <a
               href={`mailto:${email}`}
-              style={{ color: iconColor, ...linkStyle }}
+              style={{ ...linkStyle, color: fontColor }}
             >
               {email}
             </a>
           </div>
-          <div>
-            <span>Phone:</span>{" "}
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <PhoneIcon fill={iconColor} /> : `Phone:`}
+            </span>
             <a
               href={`tel:+${phoneNumber}`}
-              style={{ color: iconColor, ...linkStyle }}
+              style={{ ...linkStyle, color: fontColor }}
             >
               +{phoneNumber}
             </a>
           </div>
-          <div>
-            <span>LinkedIn:</span>{" "}
-            <a href={linkedin} style={{ color: iconColor, ...linkStyle }}>
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <LinkedinIcon fill={iconColor} /> : `LinkedIn:`}
+            </span>{" "}
+            <a href={linkedin} style={{ ...linkStyle, color: fontColor }}>
               {linkedin}
             </a>
           </div>
-          <div>
-            <span>Address:</span>{" "}
-            <span style={{ color: iconColor }}>{address}</span>
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <AddressIcon fill={iconColor} /> : `Address:`}
+            </span>{" "}
+            <span>{address}</span>
           </div>
         </div>
         {/* Experiences */}
@@ -85,8 +113,9 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
             <div key={index}>
               <h3>{exp.title}</h3>
               <p>{`${exp.startDate} - ${exp.endDate}`}</p>
-              <p>{exp.company}</p>
-              <p>{exp.location}</p>
+              <p>
+                {exp.company}, {exp.location}
+              </p>
               <p>{exp.description}</p>
             </div>
           ))}
@@ -98,9 +127,9 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
             <div key={index}>
               <h3>{edu.degree}</h3>
               <p>{`${edu.startDate} - ${edu.endDate}`}</p>
-              <p>{edu.major}</p>
-              <p>{edu.institution}</p>
-              <p>{edu.location}</p>
+              <p>
+                {edu.major} | {edu.institution}, {edu.location}
+              </p>
               <p>{edu.description}</p>
             </div>
           ))}
@@ -132,10 +161,7 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
           </h2>
           <ul>
             {skills.map((skill, index) => (
-              <li
-                key={index}
-                style={{ color: "#fff" }}
-              >{`${skill.name}: ${skill.score}`}</li>
+              <li key={index} style={{ color: "#fff" }}>{`${skill.name}`}</li>
             ))}
           </ul>
         </section>

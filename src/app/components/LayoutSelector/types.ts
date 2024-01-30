@@ -6,5 +6,4 @@ export enum LayoutTypes {
   GRAPHICAL,
 }
 
-export type LayoutSelectorProps = Pick<LayoutProps, "styles"> &
-  Partial<Pick<LayoutProps, "data">>;
+export type LayoutSelectorProps = Pick<LayoutProps, 'styles'> & Partial<Pick<LayoutProps, 'data'>>;

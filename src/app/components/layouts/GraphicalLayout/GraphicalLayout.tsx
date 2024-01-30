@@ -1,4 +1,11 @@
+import { AddressIcon, EmailIcon, LinkedinIcon, PhoneIcon } from "@app/svg";
 import { LayoutProps } from "../types";
+
+const personalDetailStyles = {
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
+};
 
 export const GraphicalLayout = ({ data, styles }: LayoutProps) => {
   const {
@@ -16,14 +23,13 @@ export const GraphicalLayout = ({ data, styles }: LayoutProps) => {
   } = data;
 
   const {
-    fontType = "Arial, sans-serif",
     fontSize = "16px",
     fontColor = "#fff",
     themeColor = "#3498db",
     iconColor = "#fff",
     underlineLinks = true,
     displayIcons = true,
-    watermarkImage,
+    watermark,
     pageMargin = "20",
   } = styles;
 
@@ -34,57 +40,79 @@ export const GraphicalLayout = ({ data, styles }: LayoutProps) => {
   return (
     <div
       style={{
-        fontFamily: fontType,
         fontSize,
         backgroundColor: "#ecf0f1",
         display: "flex",
-        gap: "20px",
+        position: "relative",
+        height: "100%",
       }}
     >
+      {watermark && (
+        <div
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "20%",
+            fontSize: "200px",
+            opacity: "0.3",
+            zIndex: "99",
+            color: "black",
+            transform: "rotateZ(45deg)",
+          }}
+        >
+          {watermark}
+        </div>
+      )}
       <div
         style={{
-          width: "30%",
+          width: "40%",
           backgroundColor: themeColor,
           padding: `${pageMargin}px`,
           color: fontColor,
         }}
       >
-        {/* Personal Details */}
         <div>
           <h1>{`${firstName} ${lastName}`}</h1>
         </div>
-        {/* Contact Details */}
-        <div style={{ marginTop: "20px" }}>
-          <div>
-            <span>Email:</span>{" "}
+        <div>{description}</div>
+        <div style={{ marginTop: "10px" }}>
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <EmailIcon fill={iconColor} /> : `Email:`}
+            </span>
             <a
               href={`mailto:${email}`}
-              style={{ color: iconColor, ...linkStyle }}
+              style={{ color: fontColor, ...linkStyle }}
             >
               {email}
             </a>
           </div>
-          <div>
-            <span>Phone:</span>{" "}
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <PhoneIcon fill={iconColor} /> : `Phone:`}
+            </span>
             <a
               href={`tel:+${phoneNumber}`}
-              style={{ color: iconColor, ...linkStyle }}
+              style={{ color: fontColor, ...linkStyle }}
             >
               +{phoneNumber}
             </a>
           </div>
-          <div>
-            <span>LinkedIn:</span>{" "}
-            <a href={linkedin} style={{ color: iconColor, ...linkStyle }}>
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <LinkedinIcon fill={iconColor} /> : `LinkedIn:`}
+            </span>
+            <a href={linkedin} style={{ color: fontColor, ...linkStyle }}>
               {linkedin}
             </a>
           </div>
-          <div>
-            <span>Address:</span>{" "}
-            <span style={{ color: iconColor }}>{address}</span>
+          <div style={personalDetailStyles}>
+            <span>
+              {displayIcons ? <AddressIcon fill={iconColor} /> : `Address:`}
+            </span>
+            <span>{address}</span>
           </div>
         </div>
-        {/* Skills with Progress Bars */}
         <section style={{ marginTop: "20px" }}>
           <h2>Skills</h2>
           {skills.map((skill, index) => (
@@ -109,34 +137,32 @@ export const GraphicalLayout = ({ data, styles }: LayoutProps) => {
           padding: `${pageMargin}px`,
         }}
       >
-        {/* Experiences */}
         <section>
           <h2>Experiences</h2>
           {experiences.map((exp, index) => (
             <div key={index}>
               <h3>{exp.title}</h3>
               <p>{`${exp.startDate} - ${exp.endDate}`}</p>
-              <p>{exp.company}</p>
-              <p>{exp.location}</p>
+              <p>
+                {exp.company}, {exp.location}
+              </p>
               <p>{exp.description}</p>
             </div>
           ))}
         </section>
-        {/* Education */}
         <section>
           <h2>Education</h2>
           {education.map((edu, index) => (
             <div key={index}>
               <h3>{edu.degree}</h3>
               <p>{`${edu.startDate} - ${edu.endDate}`}</p>
-              <p>{edu.major}</p>
-              <p>{edu.institution}</p>
-              <p>{edu.location}</p>
+              <p>
+                {edu.major} | {edu.institution}, {edu.location}
+              </p>
               <p>{edu.description}</p>
             </div>
           ))}
         </section>
-        {/* Certifications */}
         <section>
           <h2>Certifications</h2>
           {certifications.map((cert, index) => (
@@ -145,11 +171,6 @@ export const GraphicalLayout = ({ data, styles }: LayoutProps) => {
               <p>{`Date: ${cert.date}`}</p>
             </div>
           ))}
-        </section>
-        {/* Description */}
-        <section style={{ marginTop: "20px" }}>
-          <h2>Description</h2>
-          <p>{description}</p>
         </section>
       </div>
     </div>

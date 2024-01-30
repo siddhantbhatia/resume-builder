@@ -1,12 +1,14 @@
 import { LayoutTypes } from "@app/components/LayoutSelector/types";
+import { FontTypes } from "@app/font";
 
 export interface TemplateFormState {
-  fontType: string;
+  templateName: string;
+  fontType: FontTypes;
   fontSize: number;
   fontColor: string;
   underlineLinks: boolean;
   displayIcons: boolean;
-  watermarkImage: string;
+  watermark: string;
   pageMargin: number;
   selectedLayout: LayoutTypes;
   themeColor: string;

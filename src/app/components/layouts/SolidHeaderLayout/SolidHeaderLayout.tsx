@@ -38,7 +38,7 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
     iconColor,
     underlineLinks,
     displayIcons,
-    watermarkImage,
+    watermark,
     pageMargin,
   } = styles;
 
@@ -49,12 +49,28 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
   return (
     <div
       style={{
-        fontFamily: fontType,
         fontSize: fontSize + "px",
         color: fontColor,
         padding: pageMargin + "px",
+        position: "relative",
       }}
     >
+      {watermark && (
+        <div
+          style={{
+            position: "absolute",
+            top: "40%",
+            left: "20%",
+            fontSize: "200px",
+            opacity: "0.3",
+            zIndex: "99",
+            color: "black",
+            transform: "rotateZ(45deg)",
+          }}
+        >
+          {watermark}
+        </div>
+      )}
       <div
         style={{
           backgroundColor: themeColor,
@@ -70,15 +86,7 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
             gap: "8px",
           }}
         >
-          {watermarkImage && (
-            <img
-              src={watermarkImage}
-              height={"50px"}
-              width={"50px"}
-              alt="watermark-logo"
-            />
-          )}
-          <h1>{`${firstName} ${lastName}`}</h1>
+          <div style={{ fontSize: 32 }}>{`${firstName} ${lastName}`}</div>
         </div>
         <div>{description}</div>
         <div style={{ marginTop: "10px" }}>
@@ -133,9 +141,12 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
           {experiences.map((exp, index) => (
             <div key={index}>
               <h3>{exp.title}</h3>
-              <p>{`${exp.startDate} - ${exp.endDate}`}</p>
-              <p>{exp.company}</p>
-              <p>{exp.location}</p>
+              <div style={{ display: "flex" }}>
+                {exp.company}, {exp.location}
+                <div
+                  style={{ marginLeft: "auto" }}
+                >{`${exp.startDate} - ${exp.endDate}`}</div>
+              </div>
               <p>{exp.description}</p>
             </div>
           ))}
@@ -145,10 +156,13 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
           {education.map((edu, index) => (
             <div key={index}>
               <h3>{edu.degree}</h3>
-              <p>{`${edu.startDate} - ${edu.endDate}`}</p>
-              <p>{edu.major}</p>
-              <p>{edu.institution}</p>
-              <p>{edu.location}</p>
+
+              <div style={{ display: "flex" }}>
+                {edu.major} | {edu.institution}, {edu.location}
+                <div
+                  style={{ marginLeft: "auto" }}
+                >{`${edu.startDate} - ${edu.endDate}`}</div>
+              </div>
               <p>{edu.description}</p>
             </div>
           ))}
@@ -166,7 +180,7 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
           <h2 style={{ borderBottom: "1px solid black" }}>Skills</h2>
           <ul>
             {skills.map((skill, index) => (
-              <li key={index}>{`${skill.name}: ${skill.score}`}</li>
+              <li key={index}>{`${skill.name}`}</li>
             ))}
           </ul>
         </section>

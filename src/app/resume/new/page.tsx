@@ -1,6 +1,6 @@
 "use client";
 
-import { createRef, useState } from "react";
+import { useState } from "react";
 
 import { TemplateForm } from "@app/components/forms/TemplateForm/TemplateForm";
 import { TemplateFormState } from "@app/components/forms/TemplateForm/types";
@@ -10,7 +10,6 @@ import { LayoutSelector } from "@app/components/LayoutSelector";
 // import { UserProfile } from "./data";
 import styles from "./page.module.css";
 import ResumeForm from "@app/components/forms/ResumeForm/ResumeForm";
-import { FormikProps, useFormik } from "formik";
 import { ResumeData } from "@app/components/layouts/types";
 import { validationSchema } from "@app/components/forms/ResumeForm/validationSchema";
 
@@ -29,17 +28,16 @@ const defaultState: TemplateFormState = {
 
 export default function Template() {
   const [formData, setFormData] = useState<TemplateFormState>(defaultState);
-
-  const formRef = createRef<FormikProps<ResumeData>>();
+  const [resumeData, setResumeData] = useState<ResumeData>();
 
   return (
     <div className={styles.container}>
       <div className={styles.template_style_sidebar}>
-        <ResumeForm formRef={formRef} />
+        <ResumeForm setFormData={setResumeData} />
       </div>
       <div className={styles.template_preview}>
         <div className={styles.template_preview_container}>
-          <LayoutSelector data={formRef.current.values} styles={formData} />
+          <LayoutSelector data={resumeData} styles={formData} />
         </div>
       </div>
     </div>

@@ -10,6 +10,10 @@ const componentMap = {
 };
 
 export const LayoutSelector = ({ data, styles }: LayoutSelectorProps) => {
+  if (!data) {
+    return <></>;
+  }
+
   const SelectedComponent = componentMap[styles.selectedLayout];
   return <SelectedComponent data={data} styles={styles} />;
 };

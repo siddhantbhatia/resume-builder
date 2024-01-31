@@ -13,6 +13,7 @@ import { validationSchema } from "@app/components/forms/ResumeForm/validationSch
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { ResumeBuilder } from "@app/components/ResumeBuilder";
+import { headers } from "next/headers";
 
 const experienceInitialValue = {
   title: "",
@@ -54,9 +55,11 @@ const initialResumeData = {
 };
 
 async function getData(param: string) {
-  const res = await fetch(
-    `http://${process.env.domain}/api/template?id=${param}`
-  );
+  const headersList = headers();
+
+  const domain = headersList.get("host");
+
+  const res = await fetch(`http://${domain}/api/template?id=${param}`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

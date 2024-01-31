@@ -1,10 +1,13 @@
 import { TemplateFormState } from "@app/components/forms/TemplateForm/types";
 import { EditTemplateComponent } from "@app/components/EditTemplate";
+import { headers } from "next/headers";
 
 async function getData(param: string) {
-  const res = await fetch(
-    `http://${process.env.domain}/api/template?id=${param}`
-  );
+  const headersList = headers();
+
+  const domain = headersList.get("host");
+
+  const res = await fetch(`http://${domain}/api/template?id=${param}`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

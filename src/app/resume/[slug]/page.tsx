@@ -1,10 +1,15 @@
 import { TemplateFormState } from "@app/components/forms/TemplateForm/types";
 import { ResumeData } from "@app/components/layouts/types";
 import { ResumeBuilder } from "@app/components/ResumeBuilder";
+import { headers } from "next/headers";
 
 async function getTemplateData(param: string) {
+  const headersList = headers();
+
+  const domain = headersList.get("host");
+
   const res = await fetch(
-    `http://${process.env.domain}/api/template?id=${param}`
+    `http://${domain}/api/template?id=${param}`
   );
 
   if (!res.ok) {
@@ -15,8 +20,12 @@ async function getTemplateData(param: string) {
 }
 
 async function getResumeData(param: string) {
+  const headersList = headers();
+
+  const domain = headersList.get("host");
+
   const res = await fetch(
-    `http://${process.env.domain}/api/resume?id=${param}`
+    `http://${domain}/api/resume?id=${param}`
   );
 
   if (!res.ok) {

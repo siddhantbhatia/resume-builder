@@ -2,9 +2,13 @@ import { ResumeListing } from "@app/components/ResumeListing";
 import { ResumeListingResponse } from "@app/types/resumeListingResponse";
 
 import styles from "./page.module.css";
+import { headers } from "next/headers";
 
 async function getData() {
-  const res = await fetch(`http://${process.env.domain}/api/resumes`);
+  const headersList = headers();
+
+  const domain = headersList.get("host");
+  const res = await fetch(`http://${domain}/api/resumes`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

@@ -39,19 +39,19 @@ const LayoutOptions = [
     value: LayoutTypes.SOLID_HEADER,
     label: "Solid header",
     imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911114-2cac87b4-b72d-457e-aa68-6d0a0c5e4a1c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174613Z&X-Amz-Expires=300&X-Amz-Signature=48096bb0e05441c9d49005f796536330a4b27b1ed40cc315b7f23f89567df6e7&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057322-71b7c4f7-ad45-4b3d-8065-6b90c1194eca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061215Z&X-Amz-Expires=300&X-Amz-Signature=21421c5cf3bcf417db504b47f2881e96c3f4509a926b7c6556d99e7dd58b0b42&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
   },
   {
     value: LayoutTypes.TWO_COLUMN,
     label: "Two Column",
     imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911149-dbdabd8c-32dd-4105-8b9f-63772f4293f2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174632Z&X-Amz-Expires=300&X-Amz-Signature=3473e4e7f89a7bdbbeaff74aff9316031e632d45a38bf9afde859aa92d16acc2&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057332-022e5490-2c3c-421e-95df-94ee2049f69f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061259Z&X-Amz-Expires=300&X-Amz-Signature=053ccba0ae70fe47a41f33d764d989d0df7bbf7117325bccbd6098278dcee7f3&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
   },
   {
     value: LayoutTypes.GRAPHICAL,
     label: "Graphical",
     imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911187-df5d9778-1b9b-45c7-9172-43dcb287409a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174649Z&X-Amz-Expires=300&X-Amz-Signature=6bcdae6d357cb3b47b59c8f4c1e7929df5e0c82de550cbf41163cf034c646604&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057373-142ca72d-8fea-401b-a8d8-c24b958ad598.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061312Z&X-Amz-Expires=300&X-Amz-Signature=9f0bcc654cad6c09ff1e4b24d986aad0e6cea4259e89124b04cf3ec1d61865ac&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
   },
 ];
 

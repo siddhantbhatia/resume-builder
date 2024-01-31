@@ -39,33 +39,31 @@ const LayoutOptions = [
     value: LayoutTypes.SOLID_HEADER,
     label: "Solid header",
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzjowI25eZlIVpH8MvRVpJqx8nvWC57Gzy0YX9wn7RLg&s",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911114-2cac87b4-b72d-457e-aa68-6d0a0c5e4a1c.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174613Z&X-Amz-Expires=300&X-Amz-Signature=48096bb0e05441c9d49005f796536330a4b27b1ed40cc315b7f23f89567df6e7&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
   },
   {
     value: LayoutTypes.TWO_COLUMN,
     label: "Two Column",
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzjowI25eZlIVpH8MvRVpJqx8nvWC57Gzy0YX9wn7RLg&s",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911149-dbdabd8c-32dd-4105-8b9f-63772f4293f2.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174632Z&X-Amz-Expires=300&X-Amz-Signature=3473e4e7f89a7bdbbeaff74aff9316031e632d45a38bf9afde859aa92d16acc2&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
   },
   {
     value: LayoutTypes.GRAPHICAL,
     label: "Graphical",
     imageUrl:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzjowI25eZlIVpH8MvRVpJqx8nvWC57Gzy0YX9wn7RLg&s",
+      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/300911187-df5d9778-1b9b-45c7-9172-43dcb287409a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T174649Z&X-Amz-Expires=300&X-Amz-Signature=6bcdae6d357cb3b47b59c8f4c1e7929df5e0c82de550cbf41163cf034c646604&X-Amz-SignedHeaders=host&actor_id=30483239&key_id=0&repo_id=750118772",
   },
 ];
 
 interface TemplateCreateFormProps {
   formData: TemplateFormState;
-  setFormData: (formData: TemplateFormState) => void;
+  setFormData?: (formData: TemplateFormState) => void;
 }
 
 export function TemplateForm({
   formData,
-  setFormData,
+  setFormData = () => {},
 }: TemplateCreateFormProps) {
-  // const [formData, setFormData] = useState<FormState>(defaultState);
-
   const handleSliderChange = (event: Event, newValue: number | number[]) => {
     setFormData({ ...formData, fontSize: newValue as number });
   };
@@ -136,11 +134,6 @@ export function TemplateForm({
               {option}
             </MenuItem>
           ))}
-          {/* {FontOptions.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))} */}
         </Select>
       </FormControl>
 

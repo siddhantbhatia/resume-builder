@@ -89,7 +89,15 @@ export const SolidHeaderLayout = ({ data, styles }: LayoutProps) => {
           <div style={{ fontSize: 32 }}>{`${firstName} ${lastName}`}</div>
         </div>
         <div>{description}</div>
-        <div style={{ marginTop: "10px" }}>
+        <div
+          style={{
+            marginTop: "10px",
+            display: "flex",
+            gap: "8px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <div style={personalDetailStyles}>
             <EmailIcon
               fill={iconColor}

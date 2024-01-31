@@ -7,49 +7,39 @@ import { TemplateFormState } from "@app/components/forms/TemplateForm/types";
 import { LayoutTypes } from "@app/components/LayoutSelector/types";
 import { LayoutSelector } from "@app/components/LayoutSelector";
 
-// import { UserProfile } from "./data";
 import styles from "./page.module.css";
-import ResumeForm from "@app/components/forms/ResumeForm/ResumeForm";
-import { ResumeData } from "@app/components/layouts/types";
-import { validationSchema } from "@app/components/forms/ResumeForm/validationSchema";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
+import { Button } from "@mui/material";
+import { FontTypes } from "@app/font";
+import { UserProfile } from "../data";
 
 const defaultState: TemplateFormState = {
-  fontType: "Open Sans",
+  templateName: "",
+  fontType: FontTypes.OPEN_SANS,
   fontSize: 16,
   fontColor: "#000000",
   themeColor: "#3498db",
   iconColor: "#ffffff",
   underlineLinks: false,
   displayIcons: false,
-  watermarkImage: "",
+  watermark: "",
   pageMargin: 20,
   selectedLayout: LayoutTypes.SOLID_HEADER,
 };
 
-export default function Template() {
+export default function NewTemplate() {
   const [formData, setFormData] = useState<TemplateFormState>(defaultState);
-  const [resumeData, setResumeData] = useState<ResumeData>();
-
-  // function printDocument() {
-  //   const input = document.getElementById("div-to-print") as HTMLElement;
-  //   html2canvas(input).then((canvas) => {
-  //     const imgData = canvas.toDataURL("image/png");
-  //     const pdf = new jsPDF();
-  //     pdf.addImage(imgData, "JPEG", 0, 0, 210, 297);
-  //     pdf.save("resume.pdf");
-  //   });
-  // }
 
   return (
     <div className={styles.container}>
       <div className={styles.template_style_sidebar}>
-        <ResumeForm setFormData={setResumeData} />
+        <TemplateForm formData={formData} setFormData={setFormData} />
+        <Button onClick={() => alert("Template saved")} variant="contained">
+          Save template
+        </Button>
       </div>
       <div className={styles.template_preview}>
         <div className={styles.template_preview_container}>
-          <LayoutSelector data={resumeData} styles={formData} />
+          <LayoutSelector data={UserProfile} styles={formData} />
         </div>
       </div>
     </div>

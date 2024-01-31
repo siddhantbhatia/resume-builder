@@ -1,6 +1,7 @@
 import { TemplateFormState as LayoutStyles } from "../forms/TemplateForm/types";
 
 export interface ResumeData {
+  templateId: string;
   firstName: string;
   lastName: string;
   email: string;

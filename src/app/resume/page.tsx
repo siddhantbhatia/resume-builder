@@ -9,14 +9,17 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import QuickActionMenu from "./components/QuickActionMenu/QuickActionMenu";
+import QuickActionMenu from "@app/components/QuickActionMenu/QuickActionMenu";
 import { redirect } from "next/navigation";
-import { TemplateListing } from "./components/TemplateListing";
-import { TemplateListingData } from "./components/TemplateListing/types";
-import { TemplateListingResponse } from "./types/templateListingResponse";
+import { TemplateListingData } from "@app/components/TemplateListing/types";
+import { TemplateListingResponse } from "@app/types/templateListingResponse";
+import { TemplateListing } from "@app/components/TemplateListing";
+import { ResumeListing } from "@app/components/ResumeListing";
+import { ResumeListingData } from "@app/components/ResumeListing/types";
+import { ResumeListingResponse } from "@app/types/resumeListingResponse";
 
 async function getData() {
-  const res = await fetch(`http://localhost:5001/api/templates`);
+  const res = await fetch(`http://localhost:5001/api/resumes`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -25,8 +28,9 @@ async function getData() {
   return res.json();
 }
 
-export default async function Home() {
-  const data = (await getData()) as TemplateListingResponse;
+export default async function Resume() {
+  const data = (await getData()) as ResumeListingResponse;
+
   return (
     <div>
       <div className={styles.app_container}>
@@ -42,7 +46,7 @@ export default async function Home() {
         </nav>
         <main className={styles.main}>
           <div className={styles.container}>
-            <TemplateListing data={data.templates} />
+            <ResumeListing data={data.resumes} />
           </div>
         </main>
       </div>

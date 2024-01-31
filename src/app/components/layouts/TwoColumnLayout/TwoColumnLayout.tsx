@@ -52,7 +52,7 @@ export const TwoColumnLayout = ({ data, styles }: LayoutProps) => {
           style={{
             position: "absolute",
             top: "40%",
-            left: "20%",
+            left: "15%",
             fontSize: "200px",
             opacity: "0.3",
             zIndex: "99",

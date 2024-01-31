@@ -1,6 +1,7 @@
 import { ResumeData } from "@app/components/layouts/types";
 
 export const UserProfile: ResumeData = {
+  templateId: "",
   firstName: "John",
   lastName: "Doe",
   email: "johndoe@example.com",

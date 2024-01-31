@@ -22,6 +22,7 @@ import {
 
 interface ResumeFormProps {
   setFormData: (values: ResumeData) => void;
+  formData: ResumeData;
 }
 
 const experienceInitialValue = {
@@ -47,33 +48,17 @@ const certificateInitialValue = { name: "", date: "" };
 
 const skillInitialValue = { name: "", score: 0 };
 
-const initialValues = {
-  firstName: "",
-  lastName: "",
-  email: "",
-  phoneNumber: "",
-  address: "",
-  linkedin: "",
-  description: "",
-  experiences: [experienceInitialValue],
-  education: [educationInitialValue],
-  certifications: [certificateInitialValue],
-  skills: [skillInitialValue],
-  references: [],
-};
-
-const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData }) => {
+const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData, formData }) => {
   const { control, handleSubmit, watch } = useForm<ResumeData>({
-    defaultValues: initialValues,
+    defaultValues: formData,
   });
 
   useEffect(() => {
     const subscription = watch((value) => {
-      console.log(value);
-      setFormData(value);
+      setFormData(value as ResumeData);
     });
     return () => subscription.unsubscribe();
-  }, [watch]);
+  }, [setFormData, watch]);
 
   const {
     fields: experienceFields,
@@ -111,7 +96,9 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData }) => {
     control,
   });
 
-  const processNumericInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const processNumericInput = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     if (e.target.value === "") return;
 
     const inputNumber = parseInt(e.target.value);
@@ -122,8 +109,8 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData }) => {
   };
 
   return (
-    <form onSubmit={(values) => handleSubmit(values)}>
-      <Accordion>
+    <form>
+      <Accordion defaultExpanded={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           id="user-detail-header"
@@ -517,13 +504,13 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData }) => {
               </Grid>
               <Grid item xs={12}>
                 {i !== 0 && (
-                  <Button type="button" onClick={() => removeEducation(i)}>
+                  <Button type="button" onClick={() => removeCertification(i)}>
                     Delete
                   </Button>
                 )}
                 <Button
                   type="button"
-                  onClick={() => addEducation(educationInitialValue)}
+                  onClick={() => addCertification(certificateInitialValue)}
                 >
                   Add more
                 </Button>
@@ -596,7 +583,14 @@ const ResumeForm: React.FC<ResumeFormProps> = ({ setFormData }) => {
         </AccordionDetails>
       </Accordion>
 
-      <Button type="submit">Submit</Button>
+      <Button
+        variant="contained"
+        onClick={() => alert("Resume saved")}
+        fullWidth
+        style={{ marginTop: "20px" }}
+      >
+        Save
+      </Button>
     </form>
   );
 };

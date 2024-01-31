@@ -2,7 +2,9 @@ import { TemplateFormState } from "@app/components/forms/TemplateForm/types";
 import { EditTemplateComponent } from "@app/components/EditTemplate";
 
 async function getData(param: string) {
-  const res = await fetch(`http://localhost:5001/api/template?id=${param}`);
+  const res = await fetch(
+    `http://${process.env.domain}/api/template?id=${param}`
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

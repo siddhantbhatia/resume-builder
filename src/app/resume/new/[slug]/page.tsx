@@ -54,7 +54,9 @@ const initialResumeData = {
 };
 
 async function getData(param: string) {
-  const res = await fetch(`http://localhost:5001/api/template?id=${param}`);
+  const res = await fetch(
+    `http://${process.env.domain}/api/template?id=${param}`
+  );
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");

@@ -25,7 +25,7 @@ export const ResumeTemplate4 = ({ data, styles }: LayoutProps) => {
     iconColor = "#fff",
     underlineLinks = true,
     displayIcons = true,
-    watermarkImage,
+    watermark,
     pageMargin = "20",
   } = styles;
 

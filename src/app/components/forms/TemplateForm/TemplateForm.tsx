@@ -38,20 +38,17 @@ const LayoutOptions = [
   {
     value: LayoutTypes.SOLID_HEADER,
     label: "Solid header",
-    imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057322-71b7c4f7-ad45-4b3d-8065-6b90c1194eca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061215Z&X-Amz-Expires=300&X-Amz-Signature=21421c5cf3bcf417db504b47f2881e96c3f4509a926b7c6556d99e7dd58b0b42&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
+    imageUrl: "/solid_header.jpg",
   },
   {
     value: LayoutTypes.TWO_COLUMN,
     label: "Two Column",
-    imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057332-022e5490-2c3c-421e-95df-94ee2049f69f.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061259Z&X-Amz-Expires=300&X-Amz-Signature=053ccba0ae70fe47a41f33d764d989d0df7bbf7117325bccbd6098278dcee7f3&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
+    imageUrl: "/two_column.jpg",
   },
   {
     value: LayoutTypes.GRAPHICAL,
     label: "Graphical",
-    imageUrl:
-      "https://github-production-user-asset-6210df.s3.amazonaws.com/30483239/301057373-142ca72d-8fea-401b-a8d8-c24b958ad598.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240131%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240131T061312Z&X-Amz-Expires=300&X-Amz-Signature=9f0bcc654cad6c09ff1e4b24d986aad0e6cea4259e89124b04cf3ec1d61865ac&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=212090158",
+    imageUrl: "/graphical.jpg",
   },
 ];
 
@@ -233,6 +230,7 @@ export function TemplateForm({
                 height="200"
                 image={layout.imageUrl}
                 alt={layout.label}
+                style={{ objectFit: "contain" }}
               />
               <CardContent>
                 <Typography variant="subtitle2" align="center">
